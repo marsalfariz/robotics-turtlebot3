@@ -1,0 +1,30 @@
+
+============================================
+MODUL 5 - TABLE 5.2
+TRIAL 1
+============================================
+
+ODOMETRY START
+x_start = 2.539621 m
+y_start = 6.845316 m
+
+ODOMETRY END
+x_end   = 2.713818 m
+y_end   = 7.312058 m
+
+ODOMETRY DISPLACEMENT
+x_odom  = 0.174197 m
+y_odom  = 0.466741 m
+
+distance = 0.498189 m
+
+PHYSICAL
+x_fisik = 0.500000 m
+y_fisik = 0.000000 m
+
+ERROR
+e_odom            = 0.948577 m
+e_fisik           = 0.500000 m
+delta odom-fisik  = 0.569205 m
+
+============================================
