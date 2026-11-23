@@ -1,0 +1,19 @@
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="verify" default="false"/>
+  <arg name="world_file"/>
+  <arg name="evidence_dir"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="server_required" value="true"/>
+  </include>
+  <node pkg="line_follower_noetic" type="node.py" name="line_follower" args="follow"
+        required="true" output="screen"/>
+  <node if="$(arg verify)" pkg="line_follower_noetic" type="node.py"
+        name="line_follower_verifier" args="verify" required="true" output="screen">
+    <param name="evidence_dir" type="str" value="$(arg evidence_dir)"/>
+  </node>
+</launch>

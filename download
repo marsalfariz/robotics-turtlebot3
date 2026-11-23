@@ -1,0 +1,9 @@
+# Generated simulation and build outputs
+**/evidence/
+**/build/
+**/install/
+**/log/
+**/__pycache__/
+*.py[cod]
+**/data/experiments/
+**/data/results*.csv

@@ -1,0 +1,24 @@
+# Parameters for the line follower controller and the lap logger.
+# Because the workspace is built with `colcon build --symlink-install`, edits here take
+# effect the next time you run `ros2 launch` - no rebuild needed.
+
+line_follower_node:
+  ros__parameters:
+    kp: 3.0               # P gain: angular.z [rad/s] per unit error (error is -1..+1). Tuned: see docs/results.csv
+    ki: 0.0               # I gain
+    kd: 0.0               # D gain
+    base_speed: 0.45      # forward speed when the line is centred [m/s] (tested 0.15-0.45)
+    min_speed: 0.05       # lowest forward speed while following [m/s]
+    max_angular: 2.0      # turning speed limit [rad/s]
+    search_speed: 1.0     # spin speed when the line is lost [rad/s]
+    line_threshold: 0.4   # a sensor with darkness above this "sees" the line
+    integral_limit: 1.0   # anti wind-up clamp for the I term
+    sensor_timeout: 0.5   # stop if no /ir_sensors message for this long [s]
+
+lap_logger_node:
+  ros__parameters:
+    log_dir: "~/line_follower_ws/logs"
+    log_rate: 10.0        # CSV rows per second
+    lap_radius: 0.15      # lap ends when back within this distance of the start [m]
+    min_lap_distance: 5.0 # ... after driving at least this far [m]
+    use_ground_truth: true # lap detection uses /ground_truth (wheel odometry slips at high speed)
